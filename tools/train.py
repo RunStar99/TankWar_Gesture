@@ -37,11 +37,11 @@ model = pdx.cls.ResNet18(num_classes=num_classes)
 model.train(num_epochs=20,
             train_dataset=train_dataset,
             train_batch_size=32,
-            lr_decay_epochs=[5, 10, 15],
-            learning_rate=2e-2,
+            lr_decay_epochs=[5, 10, 15],                  #默认优化器的学习率衰减轮数
+            learning_rate=2e-2,                           #默认优化器的初始学习率。默认为0.025。
             save_dir='w',
-            log_interval_steps=5,
-            save_interval_epochs=4)
+            log_interval_steps=5,                         #训练日志输出间隔（单位：迭代步数）。默认为2
+            save_interval_epochs=4)                       #模型保存间隔（单位：迭代轮数）。默认为1
 
 im = cv2.imread('test.jpg')
 result = model.predict('test.jpg', topk=1, transforms=train_transforms)

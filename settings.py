@@ -52,7 +52,7 @@ class Settings:
         UP: "./resources/images/hero/hero1U.gif",
         DOWN: "./resources/images/hero/hero1D.gif"
     }
-    HERO_SPEED = 2
+    HERO_SPEED = 10
     BOSS_IMAGE = "./resources/images/walls/5.png"
     # 我方老家
 
@@ -63,13 +63,13 @@ class Settings:
         UP: "./resources/images/enemy/enemy2U.gif",
         DOWN: "./resources/images/enemy/enemy2D.gif"
     }
-    ENEMY_COUNT = 5
-    ENEMY_SPEED = 1
+    ENEMY_COUNT = 8
+    ENEMY_SPEED = 2
 
     # 子弹
     BULLET_IMAGE_NAME = "./resources/images/bullet/bullet.png"
     BULLET_RECT = Rect(0, 0, 5, 5)
-    BULLET_SPEED = 5
+    BULLET_SPEED = 15
 
     # 0表示空白、1表示红墙、2表示铁墙、3表示草、4表示海、5表示鸟
     RED_WALL = 1

@@ -1,19 +1,12 @@
-
+# import pygame
 import cv2
 import paddlex
 from paddlex.cls import transforms
-from sprites import *
+# from sprites import *
 from utils import *
-from config import *
 from tank_war import *
 import imutils
 import numpy as np
-
-
-
-
-
-
 
 
 class TankWar:
@@ -25,10 +18,9 @@ class TankWar:
     bg = None
     model = paddlex.load_model('weights/final')
 
-    def process_gesture(self,thresholded):
+    def process_gesture(self, thresholded):
 
         bg = None
-        # model = paddlex.load_model('weights/final')
         input_im = cv2.merge(
             [thresholded, thresholded, thresholded])
         result = self.model.predict(
@@ -58,7 +50,7 @@ class TankWar:
 
         return gesture, input_im, layout
 
-    def run_avg(self,image, aWeight):
+    def run_avg(self, image, aWeight):
         global bg
         if bg is None:
             bg = image.copy().astype('float')
@@ -66,7 +58,7 @@ class TankWar:
 
         cv2.accumulateWeighted(image, bg, aWeight)
 
-    def segment(self,image, threshold=25):
+    def segment(self, image, threshold=25):
         global bg
         diff = cv2.absdiff(bg.astype('uint8'), image)
 
@@ -309,7 +301,9 @@ class TankWar:
             # 1、设置刷新帧率
             self.clock.tick(Settings.FPS)
             # 2、事件监听
-            # self.__event_handler()
+            self.__event_handler()
+
+            self.__check_collide()  #碰撞检测
 
             grabbed, frame = camera.read()
             if not grabbed:
